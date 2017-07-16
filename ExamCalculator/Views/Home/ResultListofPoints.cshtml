@@ -1,0 +1,65 @@
+﻿@using System.Data;
+
+@model  System.Data.DataTable
+
+@{ 
+    Layout = null;
+}
+
+@if (Model.Rows.Count>0)
+{
+}
+
+
+    <title> Tələbə Sistemi </title>
+    <link rel="stylesheet" type="text/css" href="~/Content/list.css">
+  
+    <div style="padding-left: 80px; padding-top:35;">
+    <div class="firstblock">
+        <h2> Tələbənin adı, soyadı və qiymətləri : </h2>
+        @*<br />*@
+        @foreach (DataRow rows in Model.Rows)
+                {
+                  
+            <h4 style="color:#3498db; text-align:center; font-size:18;"> @rows["name"] @rows["surname"]</h4> @*<br />*@
+                }
+    </div>
+    <!-- 1 ci blokun sonu -->
+    <div class="secondblock">
+        <h2> Tələbənin illik ortalama qiyməti : </h2>
+        @foreach (DataRow rows in Model.Rows)
+        {
+            <h2>
+                @rows["average_point"]
+
+                @*@if (Convert.ToInt32(rows["average_point"]) < 51)
+                    {
+                        <div>Kəsildiniz!</div>
+                    }
+                    else {
+                        <div>Keçdiniz!</div>
+                    }*@
+            </h2>
+        }
+    </div>
+
+    <div class="thirdblock">
+        <h2> Keçdi / Kəsildi : </h2>
+        @foreach (DataRow rows in Model.Rows)
+        {
+            <h2>
+                @*@rows["average_point"]
+                    /*@
+                @if (Convert.ToInt32(rows["average_point"]) < 51)
+                {
+                    <div style="color: red">Kəsildiniz!</div>
+                }
+                else
+                {
+                    <div style="color: limegreen">Keçdiniz!</div>
+                }
+            </h2>
+        }
+    </div>
+</div>
+   

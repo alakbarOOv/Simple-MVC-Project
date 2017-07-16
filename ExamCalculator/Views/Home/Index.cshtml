@@ -1,0 +1,62 @@
+﻿@using System.Data.SqlClient;
+
+@model ExamCalculator.Models.CalculateModels
+
+@{
+    Layout = null;
+}
+
+@if (Model.isdataSuccessModel)
+{
+    <script>alert('MƏLUMATLAR BAZAYA UĞURLA DAXİL EDİLDİ!');</script>
+    @*<script type="text/javascript">
+         $(document).ready(function(){
+             $("#submitButton").on("click", function ()
+          {
+        alert('MƏLUMATLAR BAZAYA UĞURLA DAXİL EDİLDİ!');
+            });
+
+        });
+    </script>*@
+}
+
+
+<! DOCTYPE html>
+<html>
+<head>
+    <title> Tələbə Sistemi </title>
+    <link rel="stylesheet" href="~/Content/style.css" type="text/css" media="screen" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+
+    @*<script type="text/javascript">
+         $(document).ready(function(){
+             $("#submitButton").on("click", function ()
+          {
+        alert('MƏLUMATLAR BAZAYA UĞURLA DAXİL EDİLDİ!');
+    });
+
+});
+    </script>*@
+
+</head>
+<body>
+    
+@using (Html.BeginForm("Calculate", "Home", FormMethod.Post))
+{
+    <div class="login-block">
+        <h2> Tələbə ad, soyadını və qiymətlərini daxil edin </h2>
+        <input type="text" name="name" placeholder="Tələbənin adı" required />
+        <input type="text" name="surname" placeholder="Tələbənin soyadı" required />
+        <input type="text" name="project" placeholder="Proje qiyməti" required />
+        <input type="text" name="visa" placeholder="Mid-term imtahanı qiyməti" required />
+        <input type="text" name="final" placeholder="Final imtahanı qiyməti" required />
+        <button class="btn-login" type="submit" name="button" id="submitButton" onclick="function">Məlumatları daxil edin</button>
+        <div style="padding-top: 10px;"/>
+        @Html.ActionLink("Tələbə siyahısına nəzər yetirmək istəyirsiniz?", "ResultListofPoints", "Home", new { @style = "text-decoration:none; padding-left:98px; font-size: 15px; " })
+    </div>
+                                                                                               
+   }
+
+   
+</body>
+</html>
